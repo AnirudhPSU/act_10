@@ -1,0 +1,66 @@
+---
+title: "Activity_9"
+output:
+  pdf_document: default
+  html_document: default
+date: "2023-11-08"
+Author: Anirudh Vivek Kumar
+---
+
+```{r,echo=TRUE}
+# Collatz Conjencture Function
+getStoppingTime <- function(a){
+  count <- 0
+  while(a!= 1){
+    if(a%%2==0){
+      a=a/2
+    }else{
+      a=3*a+1
+    }  
+    count <- count+1
+  } 
+  return(count)
+}
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r,echo=TRUE}
+# Example code for diamond pricing analysis
+library(ggplot2)
+library(dplyr)
+
+# Load diamond dataset
+diamonds_data <- diamonds
+
+# Data visualization - Price vs. Carat
+ggplot(diamonds_data, aes(x = carat, y = price)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", color = "red") +
+  labs(title = "Diamond Price vs. Carat",
+       x = "Carat",
+       y = "Price")
+
+# Summary table
+summary_table <- diamonds_data %>%
+  group_by(cut) %>%
+  summarise(Mean_Price = mean(price),
+            Median_Price = median(price),
+            Max_Price = max(price))
+
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{# I learned about the syntax for R-studio as well as the basics of how to code using it}
+# I have also learned about  data visualizations and the right way to create them.
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
